@@ -1,0 +1,42 @@
+{
+  "name": "zido-widget",
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript widget for embedding Zido booking interface",
+  "main": "dist/zido-widget.js",
+  "module": "dist/zido-widget.esm.js",
+  "unpkg": "dist/zido-widget.min.js",
+  "jsdelivr": "dist/zido-widget.min.js",
+  "files": [
+    "dist/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node build/build.js",
+    "dev": "npm run build -- --watch",
+    "prepublishOnly": "npm run build",
+    "test": "open tests/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhaybraja/zido-widget.git"
+  },
+  "keywords": [
+    "widget",
+    "iframe",
+    "booking",
+    "embed",
+    "javascript",
+    "zido"
+  ],
+  "author": "Abhay Braja <abhaybraja@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abhaybraja/zido-widget/issues"
+  },
+  "homepage": "https://github.com/abhaybraja/zido-widget#readme",
+  "devDependencies": {
+    "terser": "^5.15.0"
+  }
+}

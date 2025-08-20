@@ -1,0 +1,81 @@
+### examples/cdn-demo.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZidoWidget CDN Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>ZidoWidget CDN Demo</h1>
+    
+    <div class="demo-section">
+        <h2>Basic Usage</h2>
+        <button onclick="openWidget()">Open Booking Widget</button>
+        <button onclick="closeWidget()">Close Widget</button>
+        <button onclick="checkStatus()">Check Status</button>
+        <div id="status" class="status"></div>
+    </div>
+
+    <!-- Load from jsDelivr CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/abhaybraja/zido-widget@latest/dist/zido-widget.min.js"></script>
+    
+    <script>
+        // Initialize widget with your org ID
+        const widget = new ZidoWidget('demo-org-id');
+        
+        function openWidget() {
+            widget.open();
+            updateStatus();
+        }
+        
+        function closeWidget() {
+            widget.close();
+            updateStatus();
+        }
+        
+        function checkStatus() {
+            updateStatus();
+        }
+        
+        function updateStatus() {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = `Widget is ${widget.isOpen() ? 'OPEN' : 'CLOSED'}`;
+        }
+        
+        // Initial status
+        updateStatus();
+    </script>
+</body>
+</html>
