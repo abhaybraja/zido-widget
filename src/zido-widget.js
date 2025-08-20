@@ -2,26 +2,23 @@
 
 (function (global) {
     class ZidoWidget {
-        constructor(orgId) {
+        constructor(orgId, options = {}) {
             if (!orgId) throw new Error("ZidoWidget requires an orgId");
 
             this.orgId = orgId;
-            this.baseUrl = "https://book.gonido.co";
+            this.baseUrl = options.baseUrl || "https://book.gonido.co";
             this.iframeUrl = `${this.baseUrl}/embed/${orgId}/items`;
             this.origin = this.baseUrl;
             this.overlayId = "zidoIframeOverlay";
             this.iframeId = "zidoDynamicIframe";
-            this.closeBtnId = "zidoCloseBtn";
 
-            // Fix: Changed from generator function to regular method
             window.addEventListener("message", this._onMessage.bind(this));
         }
 
-        // Fix: Renamed to _onMessage to match the binding above
         _onMessage(event) {
             if (event.origin !== this.origin) return;
             const { type } = event.data || {};
-            if (type === "ZIDO_CLOSE_WIDGET") { // Fix: Removed invalid asterisk
+            if (type === "ZIDO_CLOSE_WIDGET") {
                 this.close();
             }
         }
@@ -39,18 +36,6 @@
           background:rgba(0,0,0,0.5); z-index:9999;
         `;
                 document.body.appendChild(overlay);
-
-                // Close button
-                const closeBtn = document.createElement("button");
-                closeBtn.id = this.closeBtnId;
-                closeBtn.innerHTML = "&times;";
-                closeBtn.style.cssText = `
-          position:absolute; top:15px; right:20px;
-          background:none; border:none; font-size:30px;
-          color:white; cursor:pointer; z-index:10000;
-        `;
-                closeBtn.onclick = () => this.close();
-                overlay.appendChild(closeBtn);
             }
 
             // Remove existing iframe to ensure fresh load

@@ -1,6 +1,6 @@
 {
   "name": "zido-widget",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight JavaScript widget for embedding Zido booking interface",
   "main": "dist/zido-widget.js",
   "module": "dist/zido-widget.esm.js",
