@@ -6,7 +6,7 @@
             if (!orgId) throw new Error("ZidoWidget requires an orgId");
 
             this.orgId = orgId;
-            this.baseUrl = options.baseUrl || "https://book.gonido.co";
+            this.baseUrl = options.baseUrl || "https://book.trupod.co";
             this.iframeUrl = `${this.baseUrl}/embed/${orgId}/items`;
             this.origin = this.baseUrl;
             this.overlayId = "zidoIframeOverlay";
